@@ -13,10 +13,10 @@ const [message,setMessage] = useState("")
 
     }
   return (
-    <div className='w-full h-full flex justify-center items-center flex-col gap-4'>
+    <div className="w-full h-full flex justify-center items-center flex-col gap-4">
       <Button
         onClick={handleGenerateToken}
-        className="px-4 py-2 bg-blue-500 text-white rounded"
+        className="px-4 py-2 bg-blue-500 hover:text-blue-400 rounded"
       >
         Generate Mock Token
       </Button>
