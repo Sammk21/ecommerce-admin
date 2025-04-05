@@ -69,10 +69,36 @@ export const ProductForm = ({
   });
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const files = Array.from(e.target.files);
-      setNewImageFiles((prev) => [...prev, ...files]);
-    }
+     if (e.target.files && e.target.files.length > 0) {
+       const files = Array.from(e.target.files);
+       const validFiles = files.filter((file: any) => {
+         // Check file type
+         const fileType = file.type;
+         const validTypes = ["image/jpeg", "image/png", "image/webp"];
+
+         // Check file size (1MB = 1048576 bytes)
+         const fileSize = file.size;
+         const maxSize = 1048576;
+
+         if (!validTypes.includes(fileType)) {
+           toast.error(
+             `${file.name} is not a supported format. Please use JPG, PNG or WebP.`
+           );
+           return false;
+         }
+
+         if (fileSize > maxSize) {
+           toast.error(
+             `${file.name} exceeds 1MB. Please upload a smaller file.`
+           );
+           return false;
+         }
+
+         return true;
+       });
+
+       setNewImageFiles((prev) => [...prev, ...files]);
+     }
   };
 
   const removeNewImage = (index: number) => {

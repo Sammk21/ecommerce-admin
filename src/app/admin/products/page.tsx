@@ -96,7 +96,7 @@ export default async function ProductsPage({
                 </TableCell>
                 <TableCell className="font-medium">{product.sku}</TableCell>
                 <TableCell>{product.name}</TableCell>
-                <TableCell>${product.price}</TableCell>
+                <TableCell>&#x20b9;{product.price}</TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
                     <Button variant="outline" size="icon" asChild>
